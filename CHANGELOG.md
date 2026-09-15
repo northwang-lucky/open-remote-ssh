@@ -1,3 +1,11 @@
+## 0.4.0
+
+- feat: connect GSSAPI-enabled hosts through the local SSH client (ControlMaster multiplexing, config passed via `-F`) (#239)
+- feat: rename to `open-remote-ssh-gssapi` with independent command/view ids and `ssh-remote-gssapi` authority so it can coexist with the upstream extension
+
+## 0.3.1
+
+- fix(windows): use improved command to test archive (#331)
 ## 0.3.1
 
 - fix(windows): use improved command to test archive (#331)

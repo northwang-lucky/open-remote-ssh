@@ -20,13 +20,13 @@ export async function activate(context: vscode.ExtensionContext) {
     }
 
     const hostTreeDataProvider = new HostTreeDataProvider(locationHistory);
-    context.subscriptions.push(vscode.window.createTreeView('sshHosts', { treeDataProvider: hostTreeDataProvider }));
+    context.subscriptions.push(vscode.window.createTreeView('sshHostsGssapi', { treeDataProvider: hostTreeDataProvider }));
     context.subscriptions.push(hostTreeDataProvider);
 
-    context.subscriptions.push(vscode.commands.registerCommand('openremotessh.openEmptyWindow', () => promptOpenRemoteSSHWindow(false)));
-    context.subscriptions.push(vscode.commands.registerCommand('openremotessh.openEmptyWindowInCurrentWindow', () => promptOpenRemoteSSHWindow(true)));
-    context.subscriptions.push(vscode.commands.registerCommand('openremotessh.openConfigFile', () => openSSHConfigFile()));
-    context.subscriptions.push(vscode.commands.registerCommand('openremotessh.showLog', () => logger.show()));
+    context.subscriptions.push(vscode.commands.registerCommand('openremotesshgssapi.openEmptyWindow', () => promptOpenRemoteSSHWindow(false)));
+    context.subscriptions.push(vscode.commands.registerCommand('openremotesshgssapi.openEmptyWindowInCurrentWindow', () => promptOpenRemoteSSHWindow(true)));
+    context.subscriptions.push(vscode.commands.registerCommand('openremotesshgssapi.openConfigFile', () => openSSHConfigFile()));
+    context.subscriptions.push(vscode.commands.registerCommand('openremotesshgssapi.showLog', () => logger.show()));
 }
 
 export function deactivate() {

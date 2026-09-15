@@ -1,15 +1,15 @@
 {
-	"name": "open-remote-ssh",
-	"displayName": "Open Remote - SSH",
-	"description": "Use any remote machine with a SSH server as your development environment.",
-	"version": "0.3.1",
-	"publisher": "jeanp413",
+	"name": "open-remote-ssh-gssapi",
+	"displayName": "Open Remote - SSH (GSSAPI)",
+	"description": "Use any remote machine with a SSH server as your development environment. Supports GSSAPI/Kerberos authentication via the local SSH client.",
+	"version": "0.4.0",
+	"publisher": "northwang-lucky",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/jeanp413/open-remote-ssh.git"
+		"url": "https://github.com/northwang-lucky/open-remote-ssh.git"
 	},
 	"bugs": {
-		"url": "https://github.com/jeanp413/open-remote-ssh/issues"
+		"url": "https://github.com/northwang-lucky/open-remote-ssh/issues"
 	},
 	"engines": {
 		"vscode": "^1.70.2"
@@ -93,12 +93,12 @@
 		"yaml": "2.9.0"
 	},
 	"activationEvents": [
-		"onCommand:openremotessh.openEmptyWindow",
-		"onCommand:openremotessh.openEmptyWindowInCurrentWindow",
-		"onCommand:openremotessh.openConfigFile",
-		"onCommand:openremotessh.showLog",
-		"onResolveRemoteAuthority:ssh-remote",
-		"onView:sshHosts"
+		"onCommand:openremotesshgssapi.openEmptyWindow",
+		"onCommand:openremotesshgssapi.openEmptyWindowInCurrentWindow",
+		"onCommand:openremotesshgssapi.openConfigFile",
+		"onCommand:openremotesshgssapi.showLog",
+		"onResolveRemoteAuthority:ssh-remote-gssapi",
+		"onView:sshHostsGssapi"
 	],
 	"contributes": {
 		"configuration": {
@@ -203,69 +203,69 @@
 		"views": {
 			"remote": [
 				{
-					"id": "sshHosts",
+					"id": "sshHostsGssapi",
 					"name": "SSH Targets",
 					"group": "targets@1",
-					"remoteName": "ssh-remote"
+					"remoteName": "ssh-remote-gssapi"
 				}
 			]
 		},
 		"commands": [
 			{
-				"command": "openremotessh.openEmptyWindow",
+				"command": "openremotesshgssapi.openEmptyWindow",
 				"title": "Connect to Host...",
 				"category": "Remote-SSH"
 			},
 			{
-				"command": "openremotessh.openEmptyWindowInCurrentWindow",
+				"command": "openremotesshgssapi.openEmptyWindowInCurrentWindow",
 				"title": "Connect Current Window to Host...",
 				"category": "Remote-SSH"
 			},
 			{
-				"command": "openremotessh.openConfigFile",
+				"command": "openremotesshgssapi.openConfigFile",
 				"title": "Open SSH Configuration File...",
 				"category": "Remote-SSH"
 			},
 			{
-				"command": "openremotessh.showLog",
+				"command": "openremotesshgssapi.showLog",
 				"title": "Show Log",
 				"category": "Remote-SSH"
 			},
 			{
-				"command": "openremotessh.explorer.emptyWindowInNewWindow",
+				"command": "openremotesshgssapi.explorer.emptyWindowInNewWindow",
 				"title": "Connect to Host in New Window",
 				"icon": "$(empty-window)"
 			},
 			{
-				"command": "openremotessh.explorer.emptyWindowInCurrentWindow",
+				"command": "openremotesshgssapi.explorer.emptyWindowInCurrentWindow",
 				"title": "Connect to Host in Current Window"
 			},
 			{
-				"command": "openremotessh.explorer.reopenFolderInCurrentWindow",
+				"command": "openremotesshgssapi.explorer.reopenFolderInCurrentWindow",
 				"title": "Open on SSH Host in Current Window"
 			},
 			{
-				"command": "openremotessh.explorer.reopenFolderInNewWindow",
+				"command": "openremotesshgssapi.explorer.reopenFolderInNewWindow",
 				"title": "Open on SSH Host in New Window",
 				"icon": "$(folder-opened)"
 			},
 			{
-				"command": "openremotessh.explorer.deleteFolderHistoryItem",
+				"command": "openremotesshgssapi.explorer.deleteFolderHistoryItem",
 				"title": "Remove From Recent List",
 				"icon": "$(x)"
 			},
 			{
-				"command": "openremotessh.explorer.refresh",
+				"command": "openremotesshgssapi.explorer.refresh",
 				"title": "Refresh",
 				"icon": "$(refresh)"
 			},
 			{
-				"command": "openremotessh.explorer.configure",
+				"command": "openremotesshgssapi.explorer.configure",
 				"title": "Configure",
 				"icon": "$(gear)"
 			},
 			{
-				"command": "openremotessh.explorer.add",
+				"command": "openremotesshgssapi.explorer.add",
 				"title": "Add New",
 				"icon": "$(plus)"
 			}
@@ -273,7 +273,7 @@
 		"resourceLabelFormatters": [
 			{
 				"scheme": "vscode-remote",
-				"authority": "ssh-remote+*",
+				"authority": "ssh-remote-gssapi+*",
 				"formatting": {
 					"label": "${path}",
 					"separator": "/",
@@ -285,146 +285,146 @@
 		"menus": {
 			"statusBar/remoteIndicator": [
 				{
-					"command": "openremotessh.openEmptyWindow",
-					"when": "remoteName =~ /^ssh-remote$/ && remoteConnectionState == connected",
+					"command": "openremotesshgssapi.openEmptyWindow",
+					"when": "remoteName =~ /^ssh-remote-gssapi$/ && remoteConnectionState == connected",
 					"group": "remote_20_ssh_1general@1"
 				},
 				{
-					"command": "openremotessh.openEmptyWindowInCurrentWindow",
-					"when": "remoteName =~ /^ssh-remote$/ && remoteConnectionState == connected",
+					"command": "openremotesshgssapi.openEmptyWindowInCurrentWindow",
+					"when": "remoteName =~ /^ssh-remote-gssapi$/ && remoteConnectionState == connected",
 					"group": "remote_20_ssh_1general@2"
 				},
 				{
-					"command": "openremotessh.openConfigFile",
-					"when": "remoteName =~ /^ssh-remote$/ && remoteConnectionState == connected",
+					"command": "openremotesshgssapi.openConfigFile",
+					"when": "remoteName =~ /^ssh-remote-gssapi$/ && remoteConnectionState == connected",
 					"group": "remote_20_ssh_1general@3"
 				},
 				{
-					"command": "openremotessh.showLog",
-					"when": "remoteName =~ /^ssh-remote$/ && remoteConnectionState == connected",
+					"command": "openremotesshgssapi.showLog",
+					"when": "remoteName =~ /^ssh-remote-gssapi$/ && remoteConnectionState == connected",
 					"group": "remote_20_ssh_1general@4"
 				},
 				{
-					"command": "openremotessh.openEmptyWindow",
+					"command": "openremotesshgssapi.openEmptyWindow",
 					"when": "remoteConnectionState == disconnected",
 					"group": "remote_20_ssh_3local@1"
 				},
 				{
-					"command": "openremotessh.openEmptyWindowInCurrentWindow",
+					"command": "openremotesshgssapi.openEmptyWindowInCurrentWindow",
 					"when": "remoteConnectionState == disconnected",
 					"group": "remote_20_ssh_3local@2"
 				},
 				{
-					"command": "openremotessh.openConfigFile",
+					"command": "openremotesshgssapi.openConfigFile",
 					"when": "remoteConnectionState == disconnected",
 					"group": "remote_20_ssh_3local@3"
 				},
 				{
-					"command": "openremotessh.openEmptyWindow",
+					"command": "openremotesshgssapi.openEmptyWindow",
 					"when": "!remoteName && !virtualWorkspace",
 					"group": "remote_20_ssh_3local@5"
 				},
 				{
-					"command": "openremotessh.openEmptyWindowInCurrentWindow",
+					"command": "openremotesshgssapi.openEmptyWindowInCurrentWindow",
 					"when": "!remoteName && !virtualWorkspace",
 					"group": "remote_20_ssh_3local@6"
 				},
 				{
-					"command": "openremotessh.openConfigFile",
+					"command": "openremotesshgssapi.openConfigFile",
 					"when": "!remoteName && !virtualWorkspace",
 					"group": "remote_20_ssh_3local@7"
 				}
 			],
 			"commandPalette": [
 				{
-					"command": "openremotessh.explorer.refresh",
+					"command": "openremotesshgssapi.explorer.refresh",
 					"when": "false"
 				},
 				{
-					"command": "openremotessh.explorer.configure",
+					"command": "openremotesshgssapi.explorer.configure",
 					"when": "false"
 				},
 				{
-					"command": "openremotessh.explorer.add",
+					"command": "openremotesshgssapi.explorer.add",
 					"when": "false"
 				},
 				{
-					"command": "openremotessh.explorer.emptyWindowInNewWindow",
+					"command": "openremotesshgssapi.explorer.emptyWindowInNewWindow",
 					"when": "false"
 				},
 				{
-					"command": "openremotessh.explorer.emptyWindowInCurrentWindow",
+					"command": "openremotesshgssapi.explorer.emptyWindowInCurrentWindow",
 					"when": "false"
 				},
 				{
-					"command": "openremotessh.explorer.reopenFolderInCurrentWindow",
+					"command": "openremotesshgssapi.explorer.reopenFolderInCurrentWindow",
 					"when": "false"
 				},
 				{
-					"command": "openremotessh.explorer.reopenFolderInNewWindow",
+					"command": "openremotesshgssapi.explorer.reopenFolderInNewWindow",
 					"when": "false"
 				},
 				{
-					"command": "openremotessh.explorer.deleteFolderHistoryItem",
+					"command": "openremotesshgssapi.explorer.deleteFolderHistoryItem",
 					"when": "false"
 				}
 			],
 			"view/title": [
 				{
-					"command": "openremotessh.explorer.add",
+					"command": "openremotesshgssapi.explorer.add",
 					"when": "view == sshHosts",
 					"group": "navigation"
 				},
 				{
-					"command": "openremotessh.explorer.configure",
+					"command": "openremotesshgssapi.explorer.configure",
 					"when": "view == sshHosts",
 					"group": "navigation"
 				},
 				{
-					"command": "openremotessh.explorer.refresh",
+					"command": "openremotesshgssapi.explorer.refresh",
 					"when": "view == sshHosts",
 					"group": "navigation"
 				}
 			],
 			"view/item/context": [
 				{
-					"command": "openremotessh.explorer.emptyWindowInNewWindow",
-					"when": "viewItem =~ /^openremotessh.explorer.host$/",
+					"command": "openremotesshgssapi.explorer.emptyWindowInNewWindow",
+					"when": "viewItem =~ /^openremotesshgssapi.explorer.host$/",
 					"group": "inline@1"
 				},
 				{
-					"command": "openremotessh.explorer.emptyWindowInNewWindow",
-					"when": "viewItem =~ /^openremotessh.explorer.host$/",
+					"command": "openremotesshgssapi.explorer.emptyWindowInNewWindow",
+					"when": "viewItem =~ /^openremotesshgssapi.explorer.host$/",
 					"group": "navigation@2"
 				},
 				{
-					"command": "openremotessh.explorer.emptyWindowInCurrentWindow",
-					"when": "viewItem =~ /^openremotessh.explorer.host$/",
+					"command": "openremotesshgssapi.explorer.emptyWindowInCurrentWindow",
+					"when": "viewItem =~ /^openremotesshgssapi.explorer.host$/",
 					"group": "navigation@1"
 				},
 				{
-					"command": "openremotessh.explorer.reopenFolderInNewWindow",
-					"when": "viewItem == openremotessh.explorer.folder",
+					"command": "openremotesshgssapi.explorer.reopenFolderInNewWindow",
+					"when": "viewItem == openremotesshgssapi.explorer.folder",
 					"group": "inline@1"
 				},
 				{
-					"command": "openremotessh.explorer.reopenFolderInNewWindow",
-					"when": "viewItem == openremotessh.explorer.folder",
+					"command": "openremotesshgssapi.explorer.reopenFolderInNewWindow",
+					"when": "viewItem == openremotesshgssapi.explorer.folder",
 					"group": "navigation@2"
 				},
 				{
-					"command": "openremotessh.explorer.reopenFolderInCurrentWindow",
-					"when": "viewItem == openremotessh.explorer.folder",
+					"command": "openremotesshgssapi.explorer.reopenFolderInCurrentWindow",
+					"when": "viewItem == openremotesshgssapi.explorer.folder",
 					"group": "navigation@1"
 				},
 				{
-					"command": "openremotessh.explorer.deleteFolderHistoryItem",
-					"when": "viewItem =~ /^openremotessh.explorer.folder/",
+					"command": "openremotesshgssapi.explorer.deleteFolderHistoryItem",
+					"when": "viewItem =~ /^openremotesshgssapi.explorer.folder/",
 					"group": "navigation@3"
 				},
 				{
-					"command": "openremotessh.explorer.deleteFolderHistoryItem",
-					"when": "viewItem =~ /^openremotessh.explorer.folder/",
+					"command": "openremotesshgssapi.explorer.deleteFolderHistoryItem",
+					"when": "viewItem =~ /^openremotesshgssapi.explorer.folder/",
 					"group": "inline@2"
 				}
 			]
@@ -449,7 +449,9 @@
 	"keywords": [
 		"remote",
 		"remote development",
-		"ssh"
+		"ssh",
+		"gssapi",
+		"kerberos"
 	],
 	"api": "none",
 	"enabledApiProposals": [

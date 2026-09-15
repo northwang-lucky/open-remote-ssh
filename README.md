@@ -1,4 +1,8 @@
-# Open Remote - SSH
+# Open Remote - SSH (GSSAPI)
+
+A maintained fork of [jeanp413/open-remote-ssh](https://github.com/jeanp413/open-remote-ssh) that adds **GSSAPI/Kerberos authentication support**, published on Open VSX as [`northwang-lucky.open-remote-ssh-gssapi`](https://open-vsx.org/namespace/northwang-lucky).
+
+Hosts whose ssh config enables GSSAPI (`GSSAPIAuthentication yes`) are connected through your local `ssh` client, which speaks `gssapi-with-mic` natively — see [GSSAPI / Kerberos authentication](#gssapi--kerberos-authentication) below. Everything else works exactly like the upstream extension.
 
 ![Open Remote SSH](https://raw.githubusercontent.com/jeanp413/open-remote-ssh/master/docs/images/open-remote-ssh.gif)
 
